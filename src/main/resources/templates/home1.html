@@ -1,0 +1,369 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>主页</title>
+<link rel="icon" th:href="@{/index/images/通信状态.png}">
+<link type="text/css" rel="stylesheet" th:href="@{/index/css/home.css}">
+<link type="text/css" rel="stylesheet" th:href="@{/index/css/chat.css}">
+<link type="text/css" rel="stylesheet" th:href="@{/index/css/more.css}">
+<link type="text/css" rel="stylesheet" th:href="@{/index/css/setting.css}">
+<link type="text/css" rel="stylesheet" th:href="@{/index/css/moudle.css}">
+<script type="text/javascript" th:src="@{/index/js/jquery-3.1.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/index/js/home.js}"></script>
+</head>
+
+<body>
+	
+	<div class="mainPanel">
+		<div class="head">
+			<div class="head_top">
+				<img th:src="@{/index/images/头像.png}" alt="" class="headPortrait">
+				<input type="text" th:value="${session.user.name}">
+			</div>
+			<div class="head_mid">
+				<ul>
+					<li id="conversation"><i>会话</i></li>
+					<li id="ContactP"><i>联系人</i></li>
+					<li id="more"><i>更多</i></li>
+					<li id="setting"><i>设置</i></li>
+				</ul>
+			</div>
+		</div><!--head-->
+		<div class="main">
+			<div class="conversation">
+				<ul>
+					<li>
+						<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+						<div class="cont"><i>张三</i><br>您的安卓手机</div>
+					</li>
+					<li>
+						<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+						<div class="cont"><i>小江</i><br>吃饭吗？</div>
+					</li>
+					<li>
+						<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+						<div class="cont"><i>小芳</i><br>看电影吗？</div>
+					</li>
+					<li>
+						<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+						<div class="cont"><i>夏明</i><br>看电影吗？</div>
+					</li>
+					<li>
+						<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+						<div class="cont"><i>小俊</i><br>看电影吗？</div>
+					</li>
+					<li>
+						<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+						<div class="cont"><i>小洋人</i><br>看电影吗？</div>
+					</li>
+					<li>
+						<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+						<div class="cont"><i>德玛</i><br>看电影吗？</div>
+					</li>
+				</ul>
+			</div><!--conversation-->
+			
+			<div class="ContactP">
+				<div class="cate">
+					<ul>
+						<li class="friend">好友</li>
+						<li class="group">群组</li>
+					</ul>
+				</div>
+				<div class="friend_list">
+					<ul class="list" id="list">
+						<li>
+							<h4>我的好友&nbsp;4/10</h4>
+							<ul>
+								<li>
+									<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+									<div class="cont"><i>张三</i><br>张三的个性签名</div>
+								</li>
+								<li>
+									<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+									<div class="cont"><i>李四</i><br>李四的个性签名</div>
+								</li>
+								<li>
+									<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+									<div class="cont"><i>老王</i><br>老王的个性签名</div>
+								</li>
+								<li>
+									<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+									<div class="cont"><i>夏雨</i><br>张三的个性签名</div>
+								</li>
+								<li>
+									<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+									<div class="cont"><i>萧林</i><br>您的安卓手机</div>
+								</li>
+								<li>
+									<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+									<div class="cont"><i>小芳</i><br>您的安卓手机</div>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h4>同学&nbsp;3/5</h4>
+							<ul>
+								<li>
+									<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+									<div class="cont"><i>李四</i><br>您的安卓手机</div>
+								</li>
+								<li>
+									<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+									<div class="cont"><i>李四</i><br>您的安卓手机</div>
+								</li>
+								<li>
+									<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+									<div class="cont"><i>李四</i><br>您的安卓手机</div>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="group_list">
+					<ul>
+						<li>
+							<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+							<div class="cont"><i>姓名</i><br>您的安卓手机</div>
+						</li>
+						<li>
+							<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+							<div class="cont"><i>小江</i><br>吃饭吗？</div>
+						</li>
+						<li>
+							<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+							<div class="cont"><i>夏明</i><br>看电影吗？</div>
+						</li>
+						<li>
+							<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+							<div class="cont"><i>夏明</i><br>看电影吗？</div>
+						</li>
+						<li>
+							<div class="icon"><img th:src="@{/index/images/头像1.png}" alt=""></div>
+							<div class="cont"><i>夏明</i><br>看电影吗？</div>
+						</li>
+					</ul>
+				</div><!--group_list-->
+			</div><!--ContactP-->
+			<div class="more">
+				<ul>
+					<li>
+						<img th:src="@{/index/images/空间.png}" alt=""><br>
+						<i>空间</i>
+					</li>
+					<li>
+						<img th:src="@{/index/images/文件.png}" alt=""><br>
+						<i>文件</i>
+					</li>
+					<li>
+						<img th:src="@{/index/images/日程.png}" alt=""><br>
+						<i>日程</i>
+					</li>
+					<li>
+						<img th:src="@{/index/images/邮件.png}" alt=""><br>
+						<i>邮件</i>
+					</li>
+				</ul>
+			</div><!--more-->
+			<div class="setting">
+				<ul>
+					<li>消息设置</li>
+					<li>关于</li>
+					<li class="lgout">退出当前账号</li>
+				</ul>
+			</div><!--setting-->
+		</div>
+	</div><!--mainPanel-->
+	
+	<div class="chatPanel">
+		<div class="head">
+			<span>张三</span>
+			<button id="btn" onClick="closeC()">关闭</button>
+		</div>
+		<div class="main">
+			<div class="msgDivL">
+				<div>
+					<img th:src="@{/index/images/头像.png}" alt="">
+				</div>
+				<div>
+					<div class="left_triangle"></div>
+					<span>你们好！</span>
+				</div>
+			</div>
+			
+			<div class="msgDivR">
+				<div>
+					<img th:src="@{/index/images/头像.png}" alt="">
+				</div>
+				<div>
+					<div class="right_triangle"></div>
+					<span>你们也好啊！</span>
+				</div>
+			</div>
+		</div>
+		<div class="foot">
+			<input type="text" name="msg" id="msg">
+			<button>发送</button>
+		</div>
+	</div><!--chatPanel-->
+	
+	<div class="module">
+		<iframe name="sinaWeatherTool" src="http://weather.news.sina.com.cn/chajian/iframe/weatherStyle40.html?city=%E5%AE%81%E6%B3%A2" width="260" height="120" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>
+	</div><!--module-->
+	
+	
+	<!--弹框组-->
+	<!--个人资料弹框-->
+	<div class="box"></div><!--遮罩层-->
+	<div class="personalInfo">
+		<table>
+			<tr class="head">
+				<td colspan="2" rowspan="2">
+					<input type="image" th:src="@{/index/images/头像.png}">
+				</td>
+			</tr>
+			<tr>
+				
+			</tr>
+			<tr>
+				<td align="center">昵称</td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td align="center">性别</td>
+				<td>
+					<input type="radio">男
+					<input type="radio">女
+				</td>
+			</tr>
+			<tr>
+				<td align="center">出生日期</td>
+				<td><input type="date"></td>
+			</tr>
+			<tr>
+				<td align="center">住址</td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td align="center">邮箱</td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td align="center">签名</td>
+				<td><textarea></textarea></td>
+			</tr>
+			<tr>
+				<td align="center">签名</td>
+				<td><textarea></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<button class="btn close" onClick="closeP()">关闭</button>
+					<button class="btn save">保存</button>
+				</td>
+			</tr>
+		</table>
+	</div><!--personalInfo个人资料弹框结束-->
+	
+	<!--右键点击菜单弹框,会话-->
+	<div class="rightClickMenu">
+		<input type="hidden" class="li_index">
+		<ul>
+			<li>关闭会话</li>
+			<li class="closeAllConv">关闭全部会话</li>
+			<br>
+			<li class="watchInfo">查看资料</li>
+			<li>
+				消息设置
+				
+			</li>
+			<li>群消息设置</li>
+		</ul>
+	</div><!--friendInfo右键点击菜单弹框,会话结束-->
+	
+	<!--右键点击菜单弹框,好友-->
+	<div class="rightClickMenu_friend">
+		<input type="hidden" id="indexF">
+		<ul>
+			<li class="modifyNote">设定备注</li>
+			<li>删除好友</li>
+			<li class="watchInfo">查看资料</li>
+			<li>移动联系人至</li>
+		</ul>
+	</div><!--friendInfo右键点击菜单弹框,会话结束-->
+	
+	<!--右键点击菜单弹框,群-->
+	<div class="rightClickMenu_group">
+		<input type="hidden" id="indexG">
+		<ul>
+			<li class="modifyNote">设定备注</li>
+			<li>群设置</li>
+			<li>群消息设置</li>
+		</ul>
+	</div><!--friendInfo右键点击菜单弹框,会话结束-->
+	
+	<!--修改备注-->
+	<div class="modify_note">
+		<input type="hidden" id="indexM">
+		<ul>
+			<h4><img th:src="@{/index/images/修改备注.png}" alt="">&nbsp;&nbsp;&nbsp;修改备注姓名</h4>
+			<br>
+			<li>请输入备注名称</li>
+			<li><input type="text" id="note_m"></li>
+			<li>
+				<button class="btn save" onClick="saveN()">保存</button>
+				<button class="btn close" onClick="closeM()">取消</button>
+			</li>
+		</ul>
+	</div><!--修改备注结束-->
+	
+	<!--好友资料friendInfo-->
+	<div class="friendInfo">
+		<table>
+			<tr class="head">
+				<td colspan="2" rowspan="2">
+					<img th:src="@{/index/images/头像.png}" alt="">
+				</td>
+			</tr>
+			<tr></tr><tr></tr>
+			
+			<tr class="tr2">
+				<td colspan="2">
+					<h4>备注</h4>
+					<br>
+					<span>没必要什么事都据理力争，教傻逼做人又不是你的义务。
+					</span>
+				</td>
+			</tr>
+			
+			<tr></tr>
+			<tr>
+				<td class="tdr">账号</td>
+				<td>1039247048</td>
+			</tr>
+			<tr>
+				<td class="tdr">昵称</td>
+				<td>姓名</td>
+			</tr>
+			<tr>
+				<td class="tdr">性别</td>
+				<td>男</td>
+			</tr>
+			<tr>
+				<td class="tdr">年龄</td>
+				<td>22</td>
+			</tr>
+			<tr>
+				<td class="tdr">所在地</td>
+				<td>中国</td>
+			</tr>
+			<tr>
+				<td class="tdr">邮箱</td>
+				<td>1039247048@m.com</td>
+			</tr>
+		</table>
+	</div><!--好友资料friendInfo结束-->
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>登录</title>
+<link rel="icon" th:href="@{/login/images/聊天 (3).png}">
+<link type="text/css" rel="stylesheet" th:href="@{/login/css/login.css}">
+<link type="text/css" rel="stylesheet" th:href="@{/login/css/magic-input.min.css}">
+<script type="text/javascript" th:src="@{/login/js/jquery-3.1.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/login/js/validate/jquery.validate-1.13.1.js}"></script>
+<script type="text/javascript" th:src="@{/login/js/validate/messages_zh.js}"></script>
+<script type="text/javascript" th:src="@{/login/js/login.js}"></script>
+<script type="text/javascript" th:src="@{/login/js/lg.js}"></script>
+<script type="text/javascript" th:src="@{/public/js/jQuery.Form.js}"></script>
+</head>
+
+<body>
+	
+		<div class="loginPanel" id="loginPanel">
+			<img th:src="@{/login/images/会话.png}" alt="" class="imgh">
+			<form action="/login" id="lgForm" method="post">
+				<div class="errorP" id="errorP" th:text="${loginMsg}"></div>
+				<div class="lg_usn">
+					<img th:src="@{/login/images/用户.png}" alt="">
+					<input type="text" th:value="${account}" name="account" id="account" placeholder="账号">
+				</div>
+				<div class="lg_pwd">
+					<img th:src="@{/login/images/密码.png}" alt="">
+					<input type="password" name="password" id="password" placeholder="密码">
+				</div>
+				<div class="lg_chbox">
+					<input type="checkbox" id="chbox1" class="mgc mgr-success mgc-lg">
+					<span>记住密码</span>
+				</div>
+				<div class="lg_cl">
+					<a href="#" id="login_btn"><img th:src="@{/login/images/返回登录.png}" alt=""></a>
+				</div>
+				<div class="lg_ul">
+					<ul>
+						<li class="regt"></li><!--注册-->
+						<li class="fpwd"></li><!--找回密码-->
+						
+					</ul>
+				</div>
+			</form>
+		</div><!--loginPanel登录面板-->
+		
+		<div class="registerPanel" id="registerPanel" style="display: none;">
+			<img th:src="@{/login/images/冬亚李-注册.png}" alt="" class="imgh">
+			<form action="/register" id="reForm" method="post">
+				<div class="errorP" id="errorPr"></div>
+				<div class="lg_usn">
+					<img th:src="@{/login/images/email.png}" alt="">
+					<input type="email" name="emailR" id="emailR" placeholder="邮箱" value="123456@wc.com">
+				</div>
+				<div class="lg_usn">
+					<img th:src="@{/login/images/用户.png}" alt="">
+					<input type="text" name="usernameR" id="usernameR" placeholder="用户名" value="乔峰">
+				</div>
+				<div class="lg_pwd">
+					<img th:src="@{/login/images/密码.png}" alt="">
+					<input type="password" name="passwordR" id="passwordR" placeholder="密码" value="123456">
+				</div>
+				<div class="lg_pwd">
+					<img th:src="@{/login/images/确认密码.png}" alt="">
+					<input type="password" name="confirmPassword"
+						   id="confirmPassword" placeholder="确认密码" value="123456">
+				</div>
+				<div class="lg_cl">
+					<a href="#" id="regt_btn"><img th:src="@{/login/images/返回登录.png}" alt=""></a>
+				</div>
+				<div class="lg_ul">
+					<ul>
+						<li class="lg"></li><!--返回登录-->
+						<li class="fpwd"></li><!--找回密码-->
+					</ul>
+				</div>
+			</form>
+		</div><!--registerPanel注册面板-->
+		
+		<div class="findPwd" id="findPwd" style="display: none;">
+			<img th:src="@{/login/images/找回密码 (1).png}" alt="" class="imgh">
+			<form action="">
+				<div class="lg_usn">
+					<img th:src="@{/login/images/email.png}" alt="">
+					<input type="email" name="eamil" placeholder="邮箱">
+				</div>
+				<div class="lg_cl">
+					<a href="#"><img th:src="@{/login/images/返回登录.png}" alt=""></a>
+				</div>
+				<div class="lg_ul">
+					<ul>
+						<li class="f_lg"></li><!--返回登录-->
+						<li class="f_regt"></li><!--注册-->
+					</ul>
+				</div>
+			</form>
+		</div><!--findPwd找回密码面板-->
+
+</body>
+</html>

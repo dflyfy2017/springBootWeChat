@@ -1,0 +1,140 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	font-family: "Arial", "sans-serif", "微软雅黑", "宋体", "Tahoma";
+}
+
+body{
+	/*background: url(../images/164516-106.jpg);*/
+	background-color: #FAFAFB;
+}
+
+.loginPanel,.registerPanel,.findPwd{
+	display: block;
+	width: 500px;
+	position: absolute;
+	margin-top: 12%;
+	margin-left: 30%;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	box-shadow: 0 10px 20px #D8D8D8;
+	z-index: 2;
+}
+
+.loginPanel .imgh{
+	margin: 10px 221px;
+}
+.registerPanel .imgh{
+	margin: 10px 225px;
+}
+.findPwd .imgh{
+	margin: 10px 166px;
+}
+.errorP{
+	margin: 5px 0 0 90px;
+	width: 190px;
+	box-shadow: 0 0 10px #D8D8D8;
+	border-radius: 3px;
+	background-color: #FFFFFF;
+	line-height: 30px;
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
+	color: #F48D1A;
+}
+.lg_usn{
+	margin-top: 20px;
+}
+.lg_pwd{
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.lg_usn img,.lg_pwd img{
+	width: 30px;
+	height: 30px;
+	margin:0px 20px 0 40px;
+	vertical-align: middle;
+}
+
+.lg_usn input,.lg_pwd input{
+	height: 30px;
+	width: 330px;
+	line-height: 30px;
+	border-width: 0 0 1px 0;
+	border-bottom: 2px solid #D8D8D8;
+	font-size: 15px;
+}
+
+.lg_usn input:focus,.lg_pwd input:focus{
+	border-width: 0 0 2px 0;
+	border-bottom: 2px solid #3AB2F5;
+	outline: medium;
+}
+
+.lg_chbox{
+	margin-left:95px;
+	margin-top: 20px;
+}
+
+.lg_chbox span{
+	font-size: 15px;
+	color: #5E5E5E;
+	font-style: italic;
+	margin-left: 10px;
+	line-height: inherit;
+}
+
+.lg_cl a{
+	z-index: 4;
+	display: inline-block;
+	border-radius: 50%;
+	width: 64px;
+	height: 64px;
+	position: absolute!important;
+	margin-left: 470px;
+	top: 40%;
+}
+
+.lg_ul{
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.regt,.fpwd,.lg,.f_lg,.f_regt{
+	display: inline-block;
+	float: left;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 18px;
+	font-size: 13px;
+	color: #fff;
+	cursor: pointer;
+}
+
+.regt{
+	background-color: red;
+	margin: 0 10px 20px 220px;
+}
+
+.lg,.f_lg{
+	background-color: #0085D0;
+	margin: 0 10px 20px 220px;
+	
+}
+.fpwd,.f_regt{
+	background-color: #F48D1A;
+	margin: 0 0 20px 0px;
+}
+
+
+
+
+
+
+

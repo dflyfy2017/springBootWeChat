@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.springboot.wechat.dao.TreeMapper">
+
+    <select id="select" resultType="cn.springboot.wechat.model.Shipin_tree">
+        SELECT * FROM shipin_tree WHERE ${key} = #{value}
+    </select>
+
+    <select id="findAll" resultType="cn.springboot.wechat.model.Shipin_tree">
+        SELECT * FROM shipin_tree
+    </select>
+
+    <delete id="delete" parameterType="java.lang.Object">
+        DELETE FROM shipin_tree WHERE ${key} = #{value}
+    </delete>
+
+    <insert id="insert" parameterType="cn.springboot.wechat.model.Shipin_tree">
+        INSERT INTO shipin_tree
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="pId != null">
+                pId,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="CODE != null">
+                CODE,
+            </if>
+            <if test="PhoneCODE != null">
+                PhoneCODE,
+            </if>
+            <if test="Important != null">
+                Important,
+            </if>
+            <if test="PhoneImportant != null">
+                PhoneImportant,
+            </if>
+            <if test="LGTD != null">
+                LGTD,
+            </if>
+            <if test="LATD != null">
+                LATD,
+            </if>
+            <if test="order != null">
+                [order],
+            </if>
+            <if test="icon != null">
+                icon,
+            </if>
+            <if test="tcount != null">
+                tcount,
+            </if>
+            <if test="isgray != null">
+                isgray,
+            </if>
+            <if test="phonemodel != null">
+                phonemodel,
+            </if>
+            <if test="phoneshowmodel != null">
+                phoneshowmodel,
+            </if>
+            <if test="type != null">
+                [type],
+            </if>
+            <if test="_id != null">
+                _id,
+            </if>
+            <if test="_pId != null">
+                _pId,
+            </if>
+            <if test="SoftType != null">
+                SoftType,
+            </if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id, jdbcType=INTEGER},
+            </if>
+            <if test="pId != null">
+                #{pId, jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name, jdbcType=NVARCHAR},
+            </if>
+            <!-- 判断CODE，PhoneCODE -->
+            <if test="CODE != null">
+                #{CODE, jdbcType=NVARCHAR},
+            </if>
+            <if test="PhoneCODE != null">
+                #{PhoneCODE, jdbcType=NVARCHAR},
+            </if>
+            <if test="Important != null">
+                #{Important, jdbcType=INTEGER},
+            </if>
+            <if test="PhoneImportant != null">
+                #{PhoneImportant, jdbcType=INTEGER},
+            </if>
+            <!-- 判断LGTD，LATD -->
+            <if test="LGTD != null">
+                #{LGTD, jdbcType=FLOAT},
+            </if>
+            <if test="LATD != null">
+                #{LATD, jdbcType=FLOAT},
+            </if>
+            <if test="order != null">
+                #{order, jdbcType=INTEGER},
+            </if>
+            <if test="icon != null">
+                #{icon, jdbcType=NVARCHAR},
+            </if>
+            <if test="tcount != null">
+                #{tcount, jdbcType=INTEGER},
+            </if>
+            <if test="isgray != null">
+                #{isgray, jdbcType=NCHAR},
+            </if>
+            <if test="phonemodel != null">
+                #{phonemodel, jdbcType=NCHAR},
+            </if>
+            <if test="phoneshowmodel != null">
+                #{phoneshowmodel, jdbcType=NCHAR},
+            </if>
+            <if test="type != null">
+                #{type, jdbcType=NCHAR},
+            </if>
+            <if test="_id != null">
+                #{_id, jdbcType=VARCHAR},
+            </if>
+            <if test="_pId != null">
+                #{_pId, jdbcType=VARCHAR},
+            </if>
+            <if test="SoftType != null">
+                #{SoftType, jdbcType=NCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="cn.springboot.wechat.model.Shipin_tree">
+        UPDATE shipin_tree
+        <set>
+            <if test="id != null">
+                id = #{id, jdbcType=INTEGER},
+            </if>
+            <if test="pId != null">
+                pId = #{pId, jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name, jdbcType=VARCHAR},
+            </if>
+            <if test="CODE != null">
+                CODE = #{CODE, jdbcType=NVARCHAR},
+            </if>
+            <if test="PhoneCODE != null">
+                PhoneCODE = #{PhoneCODE, jdbcType=NVARCHAR},
+            </if>
+            <if test="Important != null">
+                Important = #{Important, jdbcType=INTEGER},
+            </if>
+            <if test="PhoneImportant != null">
+                PhoneImportant = #{PhoneImportant, jdbcType=INTEGER},
+            </if>
+            <if test="LGTD != null">
+                LGTD = #{LGTD, jdbcType=FLOAT},
+            </if>
+            <if test="LATD != null">
+                LATD = #{LATD, jdbcType=FLOAT},
+            </if>
+            <if test="order != null">
+                [order] = #{order, jdbcType=INTEGER},
+            </if>
+            <if test="icon != null">
+                icon = #{icon, jdbcType=VARCHAR},
+            </if>
+            <if test="tcount != null">
+                tcount = #{tcount, jdbcType=INTEGER},
+            </if>
+            <if test="isgray != null">
+                isgray = #{isgray, jdbcType=NCHAR},
+            </if>
+            <if test="phonemodel != null">
+                phonemodel = #{phonemodel, jdbcType=NCHAR},
+            </if>
+            <if test="phoneshowmodel != null">
+                phoneshowmodel = #{phoneshowmodel, jdbcType=NCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type, jdbcType=NCHAR},
+            </if>
+            <if test="_id != null">
+                _id = #{_id, jdbcType=VARCHAR},
+            </if>
+            <if test="_pId != null">
+                _pId = #{_pId, jdbcType=VARCHAR},
+            </if>
+            <if test="SoftType != null">
+                SoftType = #{SoftType, jdbcType=NCHAR},
+            </if>
+        </set>
+        WHERE _id = #{_id}
+    </update>
+
+
+    <update id="updateLGTDAndLATD" parameterType="cn.springboot.wechat.model.Shipin_tree">
+        UPDATE shipin_tree
+        <set>
+            <if test="LGTD != null and LGTD != 0">
+                LGTD = #{LGTD, jdbcType=FLOAT},
+            </if>
+            <if test="LATD != null and LATD != 0">
+                LATD = #{LATD, jdbcType=FLOAT},
+            </if>
+        </set>
+        WHERE _id = #{_id}
+    </update>
+
+</mapper>

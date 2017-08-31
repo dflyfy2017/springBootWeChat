@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.springboot.wechat.dao.UserDao">
+    <select id="findAll" resultType="cn.springboot.wechat.model.User">
+        SELECT id,name,password FROM user
+    </select>
+
+    <select id="select" resultType="cn.springboot.wechat.model.User">
+        SELECT * FROM user WHERE ${key} = #{value}
+    </select>
+
+    <update id="update" parameterType="cn.springboot.wechat.model.User">
+        UPDATE user SET last_login_date=#{last_login_date},
+        login_times=#{login_times} WHERE account=#{account}
+    </update>
+
+    <insert id="insert" parameterType="cn.springboot.wechat.model.User"
+    useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user(name,account,password,email,picture,register_date)
+        VALUES (
+        #{name},#{account},#{password},#{email},
+        #{picture},#{register_date}
+        )
+    </insert>
+</mapper>

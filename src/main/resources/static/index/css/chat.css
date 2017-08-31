@@ -1,0 +1,130 @@
+@charset "utf-8";
+/* CSS Document */
+.chatPanel {
+	width: 500px;
+	height: 580px;
+	margin-top: 2%;
+	margin-left: 2%;
+	box-shadow: 0 0 50px #D8D8D8;
+	float: left;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	display: block;
+}
+.chatPanel .head {
+	height: 50px;
+	line-height: 50px;
+	text-indent: 200px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	background-color: #2F9BE9;
+}
+.chatPanel .main {
+	height: 480px;
+	/*background-color: #534D63;*/
+	/*opacity: 0.1;*/
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+/*聊天气泡--左*/
+.chatPanel .main .msgDivL {
+	clear: both;
+	margin-top: 10px;
+	margin-left: 5px;
+	
+}
+.chatPanel .main .msgDivL div:nth-child(1) {
+	float: left;
+}
+.chatPanel .main .msgDivL div:nth-of-type(2) {
+	background-color: aquamarine;
+	float: left;
+	font-size: 15px;
+	margin: 0 20px 10px 15px;
+	padding: 10px 10px 10px 0px;
+	border-radius: 7px;
+}
+.chatPanel .main .msgDivL:first-child img, .chatPanel .main .msgDivR:first-child img {
+	width: 50px;
+	height: 50px;
+}
+/*聊天气泡--右*/
+.chatPanel .main .msgDivR {
+	clear: both;
+	margin-right: 5px;
+	
+}
+.chatPanel .main .msgDivR div:nth-child(1) {
+	float: right;
+}
+.chatPanel .main .msgDivR div:nth-of-type(2) {
+	background-color: gold;
+	float: right;
+	font-size: 15px;
+	margin: 0 10px 10px 20px;
+	padding: 10px 0px 10px 10px;
+	border-radius: 7px;
+}
+.chatPanel .main .msgDivL .left_triangle {
+	height: 0px;
+	width: 0px;
+	border-width: 8px;
+	border-style: solid;
+	border-color: transparent aquamarine transparent transparent;
+	position: relative;
+	left: -16px;
+	top: 3px;
+}
+.chatPanel .main .msgDivR .right_triangle {
+	height: 0px;
+	width: 0px;
+	border-width: 8px;
+	border-style: solid;
+	border-color: transparent transparent transparent gold;
+	position: relative;
+	right: -16px;
+	top: 3px;
+}
+.chatPanel .foot {
+	height: 50px;
+	background-color: #2F9BE9;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+.chatPanel .head span {
+	display: block;
+	float: left;
+	color: #fff;
+	font-weight: bold;
+	font-size: 18px;
+}
+.chatPanel .head button, .chatPanel .foot button {
+	width: 60px;
+	height: 40px;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	color: #fff;
+	background-color: #5bc0de;
+	border-color: #46b8da;
+}
+.chatPanel .head button:hover, .chatPanel .foot button:hover, .chatPanel .head button:active, .chatPanel .foot button:active {
+	background-color: #31b0d5;
+	border-color: #269abc;
+}
+.chatPanel .foot input {
+	width: 360px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 10px;
+	border: none;
+	outline: medium;
+	font-size: 15px;
+	margin-left: 50px;
+	margin-top: 5px;
+	padding-left: 5px;
+}
+.chatPanel .foot input:focus {
+	box-shadow: 0 0 10px #337ab7;
+}

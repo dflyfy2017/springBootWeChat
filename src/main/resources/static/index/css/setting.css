@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+.setting{
+	height: 440px;
+	width: 300px;
+	display: none;
+}
+
+.setting ul li{
+	display: block;
+	width: 260px;
+	vertical-align: middle;
+	height: 40px;
+	border: 1px solid #D8D8D8;
+	border-radius: 5px;
+	text-align: center;
+	margin-top: 10px;
+	margin-left: 20px;
+	line-height: 40px;
+	cursor: pointer;
+}
+
+.setting ul li:hover,
+.setting ul li:active{
+	background-color: #e6e6e6;
+	border-color: #adadad;
+}
+
+.setting ul .lgout{
+	color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a; 
+}
+
+.setting ul .lgout:hover,
+.setting ul .lgout:active{
+	color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}

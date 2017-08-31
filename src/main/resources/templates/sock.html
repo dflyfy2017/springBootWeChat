@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{/public/js/jquery-3.1.1.min.js}"></script>
+    <style>
+        .box{
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+        }
+        .content{
+            width: 400px;
+            height: inherit;
+            border: 1px solid gray;
+            float: left;
+            overflow: auto;
+        }
+        .c_left,.c_right{
+            width: 300px;
+            background-color: #EEEEEE;
+            box-shadow: 0 0 5px #D8D8D8;
+            padding: 15px;
+            margin: 5px 0px 10px 5px;
+            border-radius: 50px;
+
+        }
+        .c_right{
+            margin-left: 60px;
+            background-color: #2683F5;
+        }
+        .userList{
+            width:96px;
+            height: inherit;
+            border: 1px solid black;
+            float: left;
+        }
+        .msg{
+            height: 30px;
+            border: 1px solid #1b6d85;
+        }
+    </style>
+    <script>
+        var ws = null;
+        function connect() {
+            var u = $("#username").val();
+            console.info(u);
+            /*var u = document.getElementsByTagName("h2")[0].innerHTML;*/
+            if ('WebSocket' in window) {
+                ws = new WebSocket("ws://localhost:8080/chatSocket?name=" + u);
+            } else {
+                alert("您的浏览器不支持WebSocket");
+            }
+
+            ws.onmessage = function (event) {
+                eval("var msg = " + event.data + ";");
+                if (undefined != msg.welcome)
+                //显示json数据中的欢迎信息
+                    var wel = "<div class='c_left'>" + msg.welcome + "</div>";
+                    $("#content").append(wel);
+                //提取json数据中的当前在线的所有用户信息
+                if (undefined != msg.usernames) {
+                    //清空用户列表中的内容
+                    $("#userList").html("");
+                    //遍历获得的用户列表
+                    $(msg.usernames).each(function () {
+                        //定义checkbox
+                        var ch = "<input type='checkbox' value='" + this + "'/>";
+                        //显示每个当前在线的用户
+                        $("#userList").append(ch + this + "<br/>");
+                    })
+                }
+
+                //提取json数据中的聊天内容信息
+                if (undefined != msg.content) {
+                    //显示聊天内容信息
+                    var con = "<div class='c_right'>" + msg.content + "</div>";
+                    $("#content").append(con);
+                }
+            }
+        }
+
+        function subSend() {
+            var val = $("#msg").val();
+            var obj = null;
+            var ss = $("#userList :checked");
+            if (ss.length == 0){
+                obj = {
+                    msg : val,
+                    type : 1  //广播
+                };
+
+            } else {
+                var to = $("#userList :checked").val();
+                obj = {
+                    to : to,
+                    msg : val,
+                    type : 2
+                };
+            }
+
+            ws.send(JSON.stringify(obj));
+            $("#msg").val("");
+        }
+
+        function disconnect() {
+            ws.close();
+            document.getElementsByTagName("button")[0].disabled = false;
+        }
+
+
+    </script>
+
+</head>
+<body>
+    <h2 th:text="${session.username}"></h2>
+    <input type="text" id="username">
+    <button onclick="connect()">连接</button>
+    <button onclick="disconnect()">断开连接</button>
+    <div id="box" class="box">
+        <div class="content" id="content">
+            <div class="msg">
+                <input type="text" id="msg">
+                <button onclick="subSend()" style="vertical-align: middle;">发送</button>
+            </div>
+            <!--<div class="c_left">
+                左
+            </div>
+            <div class="c_right">右</div>
+            <div class="c_left">左</div>
+            <div class="c_right">右</div>-->
+        </div>
+        <div id="userList" class="userList"></div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+.more{
+	height: 440px;
+	width: 300px;
+	display: none;
+}
+
+.more ul li{
+	display: block;
+	width: 148px;
+	height: 100px;
+	float: left;
+	cursor: pointer;
+}
+.more ul li:hover, 
+.more ul li:active{
+	color: #E12226;
+}
+.more ul li img{
+	width: 50px;
+	height: 50px;
+	padding-left: 49px;
+	padding-top: 10px;
+	
+}
+.more ul li i{
+	padding-left: 55px;
+	font-style: normal;
+	font-weight: bold;
+}
+
+

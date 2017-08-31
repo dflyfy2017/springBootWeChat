@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/zTree/css/zTreeStyle/zTreeStyle.css}">
+    <script type="text/javascript" th:src="@{/zTree/js/jquery-1.4.4.min.js}"></script>
+    <script type="text/javascript" th:src="@{/zTree/js/jquery.ztree.core.js}"></script>
+    <script type="text/javascript" th:src="@{/zTree/js/jquery.ztree.exedit.js}"></script>
+    <script type="text/javascript" th:src="@{/zTree/js/tree.js}"></script>
+    <!--<script type="text/javascript" th:src="@{/zTree/js/test.js}"></script>-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrap {
+            position: relative;
+            width: 300px;
+            margin-top: 10px;
+            margin-left: 20px;
+            height: 550px;
+            overflow: auto;
+            box-shadow: 0 0px 50px #D8D8D8;
+        }
+
+        #rMenu {
+            position: absolute;
+            visibility: hidden;
+            top: 200px;
+            left: 300px;
+            background-color: #fff;
+            text-align: left;
+            box-shadow: 0 0 10px #D8D8D8;
+            border-radius: 5px;
+        }
+
+        #rMenu ul li {
+            margin: 10px 0;
+            padding: 5px 20px;
+            cursor: pointer;
+            list-style: none outside none;
+        }
+
+        #rMenu ul li:hover {
+            background-color: #D8D8D8;
+        }
+
+        .treeInfoPanel {
+            position: absolute;
+            top: 20px;
+            left: 400px;
+            box-shadow: 0 0 50px #D8D8D8;
+            padding: 10px 10px;
+            border-radius: 5px;
+            visibility: visible;
+        }
+
+        .treeInfoPanel table {
+            border-collapse: collapse;
+        }
+
+        .treeInfoPanel table tr {
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #DDD;
+        }
+
+        .treeInfoPanel table tr td {
+            padding: 5px 5px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .treeInfoPanel table tr td input[type=text],
+        .treeInfoPanel table tr td input[type=button] {
+            height: 34px;
+            line-height: 34px;
+            font-size: 14px;
+            padding-left: 5px;
+            width: 250px;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .treeInfoPanel table tr td input[type=text]:focus {
+            border-color: #66afe9;
+            outline: 0;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075),
+            0 0 8px rgba(102, 175, 233, .6);
+        }
+
+        .treeInfoPanel table tr td input[type=button] {
+            width: 100px;
+        }
+
+        .treeInfoPanel table tr td input[type=button]:nth-child(3) {
+            color: #fff;
+            background-color: #f0ad4e;
+            border-color: #eea236;
+
+        }
+
+        .treeInfoPanel table tr td input[type=button]:nth-child(3):hover {
+            color: #fff;
+            background-color: #ec971f;
+            border-color: #d58512;
+        }
+
+        .treeInfoPanel table tr td input[type=button]:nth-child(2):hover {
+            color: #333;
+            background-color: #e6e6e6;
+            border-color: #adadad;
+        }
+
+        .treeInfoPanel table:nth-child(1) {
+            float: left;
+        }
+
+        .treeInfoPanel table:nth-child(2) {
+            float: left;
+            margin-left: 20px;
+        }
+
+        .select {
+            margin-top: 5px;
+            margin-left: 20px;
+        }
+
+        .select span {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        #section {
+            margin-top: 5px;
+            display: block;
+            width: 22%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+
+        #section:focus {
+            border-color: #66afe9;
+            outline: 0;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075),
+            0 0 8px rgba(102, 175, 233, .6);
+        }
+
+        #nodeInfoPanel {
+            position: absolute;
+            top: 50px;
+            left: 100px;
+            width: 200px;
+            height: 300px;
+            border-radius: 5px;
+            padding: 10px 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: rgb(43, 21, 73);
+            box-shadow: 0 0 20px #fff;
+            z-index: 20;
+            visibility: hidden;
+        }
+
+        #nodeInfoPanel table {
+            width: inherit;
+            height: inherit;
+            border-collapse: collapse;
+        }
+
+        #nodeInfoPanel table tr {
+            border-bottom: 1px solid #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="select">
+    <span>请选择数据库</span><br>
+    <select id="section" onchange="changeDataSource();">
+        <option value="primary">电脑本地测试库1(primary)</option>
+        <option value="test" selected="selected">电脑本地测试库2(test)</option>
+        <option value="shanhong">山洪(shanhong)</option>
+        <option value="zhsl">智慧水利(ZHSL)</option>
+    </select>
+</div>
+<div class="wrap">
+    <div>
+        <ul id="treeDemo" class="ztree"></ul>
+    </div>
+</div>
+
+<div id="rMenu">
+    <input type="hidden" id="nodeData">
+    <ul>
+        <li id="m_add" onclick="addTreeNode();">增加节点</li>
+        <li id="m_reset" onclick="modifyTree();">修改节点</li>
+        <li id="m_hide" onclick="simpleModifyToTreeNode('status', 0);">隐藏节点</li>
+        <li id="m_show" onclick="simpleModifyToTreeNode('status', 1);">显示节点</li>
+        <li id="m_gray" onclick="simpleModifyToTreeNode('fontColor', 'true');">设置为灰色</li>
+        <li id="m_restore" onclick="simpleModifyToTreeNode('fontColor', '');">设置为黑色</li>
+        <li id="m_del" onclick="removeTreeNode();">删除节点</li>
+    </ul>
+</div>
+
+
+<div id="treeInfoPanel" class="treeInfoPanel">
+    <table>
+        <tr>
+            <td>id</td>
+            <td><input type="text" id="id" onblur="checkNull(this)"></td>
+        </tr>
+        <tr>
+            <td>pId</td>
+            <td><input type="text" id="pId" onblur="checkNull(this)"></td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td><input type="text" id="name" onblur="checkNull(this)"></td>
+        </tr>
+        <tr>
+            <td>CODE</td>
+            <td><input type="text" id="CODE"></td>
+        </tr>
+        <tr>
+            <td>PhoneCODE</td>
+            <td><input type="text" id="PhoneCODE"></td>
+        </tr>
+        <tr>
+            <td>Important</td>
+            <td><input type="text" id="Important" value="1" onblur="checkNull(this)"></td>
+        </tr>
+        <tr>
+            <td>PhoneImportant</td>
+            <td><input type="text" id="PhoneImportant" value="1"></td>
+        </tr>
+        <tr>
+            <td>LGTD</td>
+            <td><input type="text" id="LGTD" placeholder="东经：输入格式：#(度),#(分),#(秒)或者直接输入浮点数"
+                       onblur="this.value=LATDAndLGTDConversion(this.value)"></td>
+        </tr>
+        <tr>
+            <td>LATD</td>
+            <td><input type="text" id="LATD" placeholder="北纬：输入格式：#(度),#(分),#(秒)或者直接输入浮点数"
+                       onblur="this.value=LATDAndLGTDConversion(this.value)"></td>
+        </tr>
+        <tr>
+            <td>order</td>
+            <td><input type="text" id="order"></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>icon</td>
+            <td><input type="text" id="icon" placeholder="icons/"></td>
+        </tr>
+        <tr>
+            <td>tcount</td>
+            <td><input type="text" id="tcount"></td>
+        </tr>
+        <tr>
+            <td>isgray</td>
+            <td><input type="text" id="isgray"></td>
+        </tr>
+        <tr>
+            <td>phonemodel</td>
+            <td><input type="text" id="phonemodel"></td>
+        </tr>
+        <tr>
+            <td>phoneshowmodel</td>
+            <td><input type="text" id="phoneshowmodel"></td>
+        </tr>
+        <tr>
+            <td>type</td>
+            <td><input type="text" id="type"></td>
+        </tr>
+        <tr>
+            <td>_id</td>
+            <td><input type="text" id="_id"></td>
+        </tr>
+        <tr>
+            <td>_pId</td>
+            <td><input type="text" id="_pId"></td>
+        </tr>
+        <tr>
+            <td>SoftType</td>
+            <td><input type="text" id="SoftType"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="hidden" id="operating">
+                <input type="button" onclick="closePanel()" value="取消">
+                <input type="button" id="btn" onclick="addOrModify()" value="提交">
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="nodeInfoPanel">
+    <table>
+        <tr>
+            <td>id</td>
+            <td><label></label></td>
+        </tr>
+        <tr>
+            <td>pId</td>
+            <td><label></label></td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td><label></label></td>
+        </tr>
+        <tr>
+            <td>CODE</td>
+            <td><label></label></td>
+        </tr>
+        <tr>
+            <td>PCODE</td>
+            <td><label></label></td>
+        </tr>
+        <tr>
+            <td>LGTD</td>
+            <td><label></label></td>
+        </tr>
+        <tr>
+            <td>LATD</td>
+            <td><label></label></td>
+        </tr>
+        <tr>
+            <td>order</td>
+            <td><label></label></td>
+        </tr>
+        <tr>
+            <td>_id</td>
+            <td><label></label></td>
+        </tr>
+        <tr>
+            <td>_pId</td>
+            <td><label></label></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
